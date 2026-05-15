@@ -1,3 +1,33 @@
 [gd_scene format=3 uid="uid://cimxp0pmqrm2f"]
 
+[ext_resource type="Script" uid="uid://buxcnma1do5k3" path="res://player.gd" id="1_xhfnw"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_0rwas"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_xhfnw"]
+size = Vector3(1, 0.3, 0.5)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kpjcp"]
+
 [node name="CharacterBody3D" type="CharacterBody3D" unique_id=307105131]
+script = ExtResource("1_xhfnw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=780085550]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_0rwas")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D" unique_id=2086843798]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.46334612, 0.30967492)
+mesh = SubResource("BoxMesh_xhfnw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=799025202]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_kpjcp")
+
+[node name="Cam_Pivot" type="Node3D" parent="." unique_id=241981104]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+
+[node name="SpringArm3D" type="SpringArm3D" parent="Cam_Pivot" unique_id=88058466]
+spring_length = 5.0
+
+[node name="Camera3D" type="Camera3D" parent="Cam_Pivot/SpringArm3D" unique_id=1372278154]
